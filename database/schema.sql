@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS hello;
+
+CREATE TABLE IF NOT EXISTS hello (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(20)
+);
+
+INSERT INTO hello (name)
+VALUES ('ram');
+
+SELECT * FROM hello;
