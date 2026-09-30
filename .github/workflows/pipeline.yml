@@ -1,0 +1,27 @@
+name: backend
+
+on:
+  push:
+    branches: 
+    - main
+    - develop
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running CI checks"
+
+  deploy-staging:
+    needs: ci
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying ${GITHUB_SHA::7} to staging"
+
+  deploy-production:
+    needs: ci
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying ${GITHUB_SHA::7} to production"
