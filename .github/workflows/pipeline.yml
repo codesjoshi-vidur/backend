@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Deploying ${GITHUB_SHA::7} to staging"
+    environment: staging
 
   deploy-production:
     needs: ci
@@ -25,3 +26,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Deploying ${GITHUB_SHA::7} to production"
+    environment: production
